@@ -20,22 +20,26 @@ USER 1001
 #COPY --chown=1001:0 requirements.txt /opt/app-root/
 COPY --chown=1001:0 run.sh /opt/app-root/bin/
 
+#                elyra-code-snippet-extension \
+#                elyra-code-viewer-extension \
+#                elyra-pipeline-editor-extension \
+#                elyra-python-editor-extension \
+
 RUN pip install pip --upgrade \
  && pip install TA-Lib \
                 boto3 \
-                elyra \
-                elyra-code-snippet-extension \
-                elyra-code-viewer-extension \
-                elyra-pipeline-editor-extension \
-                elyra-python-editor-extension \
+                elyra[all] \
                 jupyterlab \
                 jupyterlab-lsp \
                 lckr_jupyterlab_variableinspector \
                 matplotlib \
+		openpyxl \
                 pandas \
                 python-lsp-server \
+		seaborn \
                 scikit-learn \
                 scipy \
+		statsmodels \
  && fix-permissions /opt/app-root -P \
  && chmod a+x /opt/app-root/bin/run.sh
 
