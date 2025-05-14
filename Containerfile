@@ -17,16 +17,11 @@ RUN curl -JLOk https://github.com/ta-lib/ta-lib/releases/download/v0.6.3/ta-lib-
 
 USER 1001
 
-#COPY --chown=1001:0 requirements.txt /opt/app-root/
 COPY --chown=1001:0 run.sh /opt/app-root/bin/
-
-#                elyra-code-snippet-extension \
-#                elyra-code-viewer-extension \
-#                elyra-pipeline-editor-extension \
-#                elyra-python-editor-extension \
 
 RUN pip install pip --upgrade \
  && pip install TA-Lib \
+                apache-airflow \
                 boto3 \
                 elyra[all] \
                 jupyterlab \
